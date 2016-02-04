@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobildev.SMS", "src\Mobildev.SMS\Mobildev.SMS.csproj", "{2FB2F51E-364E-48A4-B163-2C4140C74415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mobildev.SMS.Tests", "src\Mobildev.SMS.Tests\Mobildev.SMS.Tests.csproj", "{11608E05-A29B-42B5-860F-2642D492CD58}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FB2F51E-364E-48A4-B163-2C4140C74415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2FB2F51E-364E-48A4-B163-2C4140C74415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2FB2F51E-364E-48A4-B163-2C4140C74415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2FB2F51E-364E-48A4-B163-2C4140C74415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11608E05-A29B-42B5-860F-2642D492CD58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11608E05-A29B-42B5-860F-2642D492CD58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11608E05-A29B-42B5-860F-2642D492CD58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11608E05-A29B-42B5-860F-2642D492CD58}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
