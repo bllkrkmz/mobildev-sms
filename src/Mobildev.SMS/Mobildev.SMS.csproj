@@ -45,6 +45,8 @@
     <Compile Include="Enum\ActionTypes.cs" />
     <Compile Include="Extensions\StringExtension.cs" />
     <Compile Include="ISmsClient.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="Base.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="SmsClient.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -4,17 +4,8 @@ using System.Xml.Serialization;
 namespace Mobildev.SMS
 {
     [Serializable, XmlRoot("MainmsgBody")]
-    public class Message
+    public class Message :Base
     {
-        [XmlElement("UserName")]
-        public string UserName { get; set; }
-
-        [XmlElement("PassWord")]
-        public string Password { get; set; }
-
-        [XmlElement("Action")]
-        public int Action { get; set; }
-
         [XmlElement("Mesgbody")]
         public string Body { get; set; }
 
