@@ -7,7 +7,7 @@ using Mobildev.SMS.Extensions;
 
 namespace Mobildev.SMS
 {
-    public class SmsClient: ISmsClient
+    public class SmsClient : ISmsClient
     {
         private readonly string _userName;
         private readonly string _password;
@@ -58,11 +58,27 @@ namespace Mobildev.SMS
             return result;
         }
 
-        private static string SendRequest(Message message)
+        public string GetUserInfo(ActionTypes action)
+        {
+            var userInfo = new UserInfo
+            {
+                UserName = _userName,
+                Password = _password,
+                Action = (int)action
+            };
+            var result = SendRequest(userInfo);
+
+            if (_exMessages.ContainsKey(result))
+                throw new Exception(_exMessages[result]);
+
+            return result;
+        }
+
+        private static string SendRequest<T>(T obj)
         {
             using (var client = new HttpClient())
             {
-                var postData = message.Serialize(Encoding.UTF8, true);
+                var postData = obj.Serialize(Encoding.UTF8, true);
                 var content = new StringContent(postData, Encoding.UTF8);
                 var request = client.PostAsync("http://8bit.mobilus.net/", content).Result;
                 var result = request.Content.ReadAsStringAsync().Result;

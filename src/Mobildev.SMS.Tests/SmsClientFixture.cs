@@ -29,5 +29,14 @@ namespace Mobildev.SMS.Tests
                 Console.WriteLine(phoneNumber);
             }
         }
+
+        [Test]
+        public void get_user_info()
+        {
+            var smsClient = new SmsClient("**", "**");
+            var result = smsClient.GetUserInfo(ActionTypes.UserInfo);
+            Console.WriteLine(result);
+
+        }
     }
 }
