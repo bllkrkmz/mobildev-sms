@@ -57,10 +57,7 @@ namespace Mobildev.SMS.Extensions
 
             text = new string(text.Where(char.IsDigit).ToArray());
             if (text.Length > 11) return text.Substring(text.Length - 12);
-            if (text.Length > 10) return text.Substring(text.Length - 11);
-            if (text.Length > 9) return text.Substring(text.Length - 10);
-
-            return string.Empty;
+            return text.Length > 9 ? text : string.Empty;
         }
 
         public static bool IsMobilePhoneNumber(this string text)
