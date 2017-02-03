@@ -1,9 +1,8 @@
-﻿using System;
-using System.Xml.Serialization;
+﻿using System.Xml.Serialization;
 
-namespace Mobildev.SMS
+namespace Mobildev.SMS.Models
 {
-    public class Base
+    public class BaseSms
     {
         [XmlElement("UserName")]
         public string UserName { get; set; }

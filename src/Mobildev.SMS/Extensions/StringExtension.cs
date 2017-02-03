@@ -6,6 +6,8 @@ namespace Mobildev.SMS.Extensions
     {
         public static string CleanHtmlTags(this string source)
         {
+            if (string.IsNullOrWhiteSpace(source)) return source;
+
             var array = new char[source.Length];
             var arrayIndex = 0;
             var inside = false;
@@ -34,6 +36,8 @@ namespace Mobildev.SMS.Extensions
 
         public static string CleanInvalidChars(this string source)
         {
+            if (string.IsNullOrWhiteSpace(source)) return source;
+
             source = source.Replace("`", "'");
             source = source.Replace("^", "'");
             source = source.Replace("…", ".");
@@ -53,7 +57,7 @@ namespace Mobildev.SMS.Extensions
 
         public static string ToPhoneNumber(this string text)
         {
-            if (string.IsNullOrWhiteSpace(text)) return string.Empty;
+            if (string.IsNullOrWhiteSpace(text)) return text;
 
             text = new string(text.Where(char.IsDigit).ToArray());
             if (text.Length > 11) return text.Substring(text.Length - 12);

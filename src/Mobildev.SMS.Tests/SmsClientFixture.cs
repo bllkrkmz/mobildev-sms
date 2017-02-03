@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
-using Mobildev.SMS.Enum;
+using Mobildev.SMS.Enums;
 using Mobildev.SMS.Extensions;
+using Mobildev.SMS.Models;
 using NUnit.Framework;
 
 namespace Mobildev.SMS.Tests
@@ -10,11 +10,25 @@ namespace Mobildev.SMS.Tests
     [TestFixture]
     public class SmsClientFixture
     {
-        [Test]
-        public void send_sms()
+        private SmsClient _smsClient;
+
+        [SetUp]
+        public virtual void Init()
         {
-            var smsClient = new SmsClient("*", "*");
-            var result = smsClient.Send(ActionTypes.SmsToConcat, "Test mesaj", new List<string> { "*" }, "*");
+            _smsClient = new SmsClient("*", "*");
+        }
+
+        [Test]
+        public void send_sms_to_many()
+        {
+            var result = _smsClient.Send(ActionTypes.SmsToManyConcat, "test SMS", new List<string> { "*" }, "*");
+
+            Console.WriteLine(result);
+        }
+        [Test]
+        public void send_sms_multi()
+        {
+            var result = _smsClient.Send(ActionTypes.SmsMultiSendersConcat, new List<MessageModel> { new MessageModel { Message = "test SMS xxx", Number = "*" }, new MessageModel { Message = "test SMS yyy", Number = "*" } }, "*");
             Console.WriteLine(result);
         }
 
@@ -33,8 +47,7 @@ namespace Mobildev.SMS.Tests
         [Test]
         public void get_user_info()
         {
-            var smsClient = new SmsClient("**", "**");
-            var result = smsClient.GetUserInfo(ActionTypes.UserInfo);
+            var result = _smsClient.GetUserInfo(ActionTypes.UserInfo);
             Console.WriteLine(result);
 
         }

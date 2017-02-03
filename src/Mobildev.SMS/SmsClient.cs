@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
-using Mobildev.SMS.Enum;
+using Mobildev.SMS.Enums;
 using Mobildev.SMS.Extensions;
+using Mobildev.SMS.Models;
 
 namespace Mobildev.SMS
 {
@@ -37,20 +38,19 @@ namespace Mobildev.SMS
             };
         }
 
-        public string Send(ActionTypes action, string body, IEnumerable<string> numbers, string displayName)
+        public string Send(ActionTypes action, string message, IEnumerable<string> numbers, string displayName)
         {
-            var message = new Message
-            {
-                UserName = _userName,
-                Password = _password,
-                Action = (int)action,
-                Body = body.CleanHtmlTags().CleanInvalidChars(),
-                Number = string.Join(",", numbers),
-                DisplayName = displayName,
-                SendDate = DateTime.Now.ToString("ddMMyyyyhhmm")
-            };
+            var result = SendRequest(SmsToMany.Build(action, message, numbers, _userName, _password, displayName));
 
-            var result = SendRequest(message);
+            if (_exMessages.ContainsKey(result))
+                throw new Exception(_exMessages[result]);
+
+            return result;
+        }
+
+        public string Send(ActionTypes action, IEnumerable<MessageModel> messages, string displayName)
+        {
+            var result = SendRequest(SmsMultiSenders.Build(action, messages, _userName, _password, displayName));
 
             if (_exMessages.ContainsKey(result))
                 throw new Exception(_exMessages[result]);
